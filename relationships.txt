@@ -1,0 +1,233 @@
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'mainScreen_view' AND b.title = 'mainScreen_bookBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"1"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'mainScreen_bookBlock_tap' AND b.title = 'bookScreen_view'
+CREATE (a)-[r:isFollowedBy {lvl:"1"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'mainScreen_view' AND b.title = 'mainScreen_searchInputField_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"23456789AB"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'mainScreen_searchInputField_tap' AND b.title = 'searchScreen_bookBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"2"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_bookBlock_tap' AND b.title = 'bookScreen_view'
+CREATE (a)-[r:isFollowedBy {lvl:"2"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'bookScreen_view' AND b.title = 'bookScreen_buyButton_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"123456789AB"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'bookScreen_view' AND b.title = 'bookScreen_rentButton_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"123456789AB"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'bookScreen_view' AND b.title = 'bookScreen_readFragmentButton_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"123456789AB"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'mainScreen_searchInputField_tap' AND b.title = 'searchScreen_searchInputField_input'
+CREATE (a)-[r:isFollowedBy {lvl:"3456789AB"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_searchInputField_input' AND b.title = 'searchScreen_allResultsListView_view'
+CREATE (a)-[r:isFollowedBy {lvl:"345"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_searchInputField_input' AND b.title = 'searchScreen_booksListView_view'
+CREATE (a)-[r:isFollowedBy {lvl:"8"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_searchInputField_input' AND b.title = 'searchScreen_genresListView_view'
+CREATE (a)-[r:isFollowedBy {lvl:"67"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_searchInputField_input' AND b.title = 'searchScreen_authorsListView_view'
+CREATE (a)-[r:isFollowedBy {lvl:"9A"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_searchInputField_input' AND b.title = 'searchScreen_seriesListView_view'
+CREATE (a)-[r:isFollowedBy {lvl:"B"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_allResultsListView_view' AND b.title = 'searchScreen_listBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"45"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_listBlock_tap' AND b.title = 'searchScreen_listPopularListView_view'
+CREATE (a)-[r:isFollowedBy {lvl:"46"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_listBlock_tap' AND b.title = 'searchScreen_listNewListView_view'
+CREATE (a)-[r:isFollowedBy {lvl:"57"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_genresListView_view' AND b.title = 'searchScreen_listBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"67"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_authorsListView_view' AND b.title = 'searchScreen_authorBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"9A"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_authorBlock_tap' AND b.title = 'authorScreen_view'
+CREATE (a)-[r:isFollowedBy {lvl:"9A"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'authorScreen_view' AND b.title = 'authorScreen_bookBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"9"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'authorScreen_view' AND b.title = 'authorScreen_seriesListView_view'
+CREATE (a)-[r:isFollowedBy {lvl:"A"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'authorScreen_seriesListView_view' AND b.title = 'authorScreen_listBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"A"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'authorScreen_listBlock_tap' AND b.title = 'authorScreen_listBlock_view'
+CREATE (a)-[r:isFollowedBy {lvl:"A"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'authorScreen_bookBlock_tap' AND b.title = 'bookScreen_view'
+CREATE (a)-[r:isFollowedBy {lvl:"9"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_allResultsListView_view' AND b.title = 'searchScreen_allResultsBookBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"3"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_allResultsBookBlock_tap' AND b.title = 'bookScreen_view'
+CREATE (a)-[r:isFollowedBy {lvl:"3"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_listPopularListView_view' AND b.title = 'searchScreen_listPopularBookBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"46"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_listPopularBookBlock_tap' AND b.title = 'bookScreen_view'
+CREATE (a)-[r:isFollowedBy {lvl:"46"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_listNewListView_view' AND b.title = 'searchScreen_listNewBookBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"57"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_listNewBookBlock_tap' AND b.title = 'bookScreen_view'
+CREATE (a)-[r:isFollowedBy {lvl:"57"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_booksListView_view' AND b.title = 'searchScreen_booksBookBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"8"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_booksBookBlock_tap' AND b.title = 'bookScreen_view'
+CREATE (a)-[r:isFollowedBy {lvl:"8"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'authorScreen_listBlock_view' AND b.title = 'authorScreen_listBookBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"A"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'authorScreen_listBookBlock_tap' AND b.title = 'bookScreen_view'
+CREATE (a)-[r:isFollowedBy {lvl:"A"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_seriesListView_view' AND b.title = 'searchScreen_seriesListBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"B"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_seriesListBlock_tap' AND b.title = 'searchScreen_seriesListListView_view'
+CREATE (a)-[r:isFollowedBy {lvl:"B"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_seriesListListView_view' AND b.title = 'searchScreen_seriesBookBlock_tap'
+CREATE (a)-[r:isFollowedBy {lvl:"B"}]->(b)
+!
+MATCH
+  (a:Event),
+  (b:Event)
+WHERE a.title = 'searchScreen_seriesBookBlock_tap' AND b.title = 'bookScreen_view'
+CREATE (a)-[r:isFollowedBy {lvl:"B"}]->(b)

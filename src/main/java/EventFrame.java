@@ -5,10 +5,17 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class EventFrame extends JDialog {
     JFrame frame = new JFrame("EventsLog");
+    JLabel message = new JLabel("");
+    JTextField nameField = new JTextField(50);
+    JTextArea paramsField = new JTextArea();
+    JTextArea descriptionField = new JTextArea();
     JButton addBtn = createSimpleButton("Add");
+    JButton fileBtn = createSimpleButton("Load from file");
+    EventAddition event = new EventAddition();
 
     public EventFrame() {
         addBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -21,7 +28,38 @@ public class EventFrame extends JDialog {
             public void mouseExited(MouseEvent e) {
                 addBtn.setForeground(Color.BLACK);
             }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                String name = nameField.getText();
+                String desc = descriptionField.getText();
+                String params = paramsField.getText();
+                message.setText(event.addEvent(name, desc, params));
+            }
         });
+
+        fileBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                fileBtn.setForeground(Color.BLUE);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                fileBtn.setForeground(Color.BLACK);
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    message.setText(LoadFile.readFile());
+                    message.setText(LoadFile.readLinks());
+                } catch (IOException ex) {
+                    message.setText("Error");
+                }
+            }
+        });
+        fileBtn.setFont(new Font("Arial", Font.PLAIN, 20));
 
         frame.setMinimumSize(new Dimension(800, 600));
         frame.setLocationRelativeTo(null);
@@ -29,7 +67,7 @@ public class EventFrame extends JDialog {
 
         Box box = new Box(BoxLayout.Y_AXIS);
         add( box );
-        addTextFieldsToPanel(box, addBtn);
+        addTextFieldsToPanel(box, nameField, descriptionField, paramsField, addBtn, fileBtn, message);
         frame.add(box);
 
         frame.pack();
@@ -51,27 +89,27 @@ public class EventFrame extends JDialog {
         return button;
     }
 
-    private static void addTextFieldsToPanel(Box box, JButton addBtn) {
+    private static void addTextFieldsToPanel(Box box, JTextField nameField, JTextArea descriptionField,
+                                             JTextArea paramsField, JButton addBtn, JButton fileBtn, JLabel message) {
+        message.setFont(new Font("Arial", Font.PLAIN, 15));
+
         JLabel nameLabel = new JLabel("Name: ");
-        JTextField nameField = new JTextField(50);
         nameField.setMaximumSize( nameField.getPreferredSize() );
-        nameField.setFont(new Font("Arial", Font.PLAIN, 20));
+        nameField.setFont(new Font("Arial", Font.PLAIN, 15));
+
         JLabel descLabel = new JLabel("Description: ");
-        JTextField descriptionField = new JTextField(50);
-        descriptionField.setMaximumSize( descriptionField.getPreferredSize() );
-        descriptionField.setFont(new Font("Arial", Font.PLAIN, 20));
+        descriptionField.setPreferredSize(new Dimension(530, 250));
+        JScrollPane scroll = new JScrollPane(descriptionField);
+        scroll.setPreferredSize(new Dimension(552, 100));
+        scroll.setMaximumSize(new Dimension(552, 100));
+        descriptionField.setFont(new Font("Arial", Font.PLAIN, 15));
+
         JLabel paramsLabel = new JLabel("Parameters: ");
-        JTextField paramsField = new JTextField(50);
-        paramsField.setMaximumSize( paramsField.getPreferredSize() );
-        paramsField.setFont(new Font("Arial", Font.PLAIN, 20));
-        JLabel platformLabel = new JLabel("Platform: ");
-        JTextField platformField = new JTextField(50);
-        platformField.setMaximumSize( platformField.getPreferredSize() );
-        platformField.setFont(new Font("Arial", Font.PLAIN, 20));
-        JLabel appVersionLabel = new JLabel("App Version: ");
-        JTextField appVersionField = new JTextField(50);
-        appVersionField.setMaximumSize( appVersionField.getPreferredSize() );
-        appVersionField.setFont(new Font("Arial", Font.PLAIN, 20));
+        paramsField.setPreferredSize(new Dimension(530, 250));
+        JScrollPane scroll2 = new JScrollPane(paramsField);
+        scroll2.setPreferredSize(new Dimension(552, 100));
+        scroll2.setMaximumSize(new Dimension(552, 100));
+        paramsField.setFont(new Font("Arial", Font.PLAIN, 15));
 
         nameLabel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         nameField.setAlignmentX(JComponent.CENTER_ALIGNMENT);
@@ -79,24 +117,20 @@ public class EventFrame extends JDialog {
         descriptionField.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         paramsLabel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         paramsField.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-        platformLabel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-        platformField.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-        appVersionLabel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-        appVersionField.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         addBtn.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        fileBtn.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        message.setAlignmentX(JComponent.CENTER_ALIGNMENT);
 
         box.add( Box.createVerticalGlue() );
         box.add( nameLabel );
         box.add( nameField );
         box.add( descLabel );
-        box.add( descriptionField );
+        box.add( scroll );
         box.add( paramsLabel );
-        box.add( paramsField );
-        box.add( platformLabel );
-        box.add( platformField );
-        box.add( appVersionLabel );
-        box.add( appVersionField );
+        box.add( scroll2 );
         box.add(addBtn);
+        box.add(fileBtn);
+        box.add(message);
         box.add( Box.createVerticalGlue() );
     }
 }

@@ -1,0 +1,123 @@
+mainScreen_view 
+Отправляется, когда пользователь просматривает основной экран приложения. 
+user_authorized [bool] (состояние пользователя: true - user authorized, false - user unauthorized) 
+!
+mainScreen_bookBlock_tap 
+Отправляется, когда пользователь выбирает книгу. 
+book_id [long] (id просматриваемой книги) 
+!
+mainScreen_searchInputField_tap 
+Отправляется, когда пользователь нажимает на поле поиска.
+-
+!
+searchScreen_bookBlock_tap 
+Отправляется, когда пользователь выбирает книгу. 
+book_id [long] (id просматриваемой книги)
+!
+searchScreen_allResultsBookBlock_tap
+Отправляется, когда пользователь выбирает книгу. 
+book_id [long] (id просматриваемой книги)
+!
+searchScreen_listPopularBookBlock_tap
+Отправляется, когда пользователь выбирает книгу из списка “Популярное”. 
+book_id [long] (id просматриваемой книги)
+!
+searchScreen_listNewBookBlock_tap
+Отправляется, когда пользователь выбирает книгу из списка “Новинки”. 
+book_id [long] (id просматриваемой книги)
+!
+searchScreen_booksBookBlock_tap
+Отправляется, когда пользователь выбирает книгу из вкладки “Книги”. 
+book_id [long] (id просматриваемой книги)
+!
+searchScreen_seriesBookBlock_tap
+Отправляется, когда пользователь выбирает книгу из вкладки “Серии”. 
+book_id [long] (id просматриваемой книги)
+!
+bookScreen_view 
+Отправляется, когда пользователь просматривает информацию о книге. 
+user_authorized [bool] (состояние пользователя: true - user authorized, false - user unauthorized); book_id [long] (id просматриваемой книги) 
+!
+searchScreen_searchInputField_input 
+Отправляется, когда пользователь вводит параметр поиска. 
+keyWords [String] (параметр поиска) 
+!
+searchScreen_allResultsListView_view 
+Отправляется, когда пользователь просматривает список результатов. 
+-
+!
+searchScreen_listBlock_tap 
+Отправляется, когда пользователь выбирает подборку. 
+list_id [long] (id просматриваемой подборки) 
+!
+searchScreen_listPopularListView_view 
+Отправляется, когда пользователь просматривает список популярных книг из подборки. 
+list_id [long] (id просматриваемой подборки) 
+!
+searchScreen_listNewListView_view 
+Отправляется, когда пользователь просматривает новинки из подборки. 
+list_id [long] (id просматриваемой подборки) 
+!
+searchScreen_booksListView_view 
+Отправляется, когда пользователь просматривает вкладку “Книги”. 
+keyWords [String] (параметр поиска) 
+!
+searchScreen_genresListView_view 
+Отправляется, когда пользователь просматривает вкладку “Жанры и теги”. 
+keyWords [String] (параметр поиска) 
+!
+searchScreen_authorsListView_view 
+Отправляется, когда пользователь просматривает вкладку “Авторы”. 
+keyWords [String] (параметр поиска) 
+!
+searchScreen_authorBlock_tap 
+Отправляется, когда пользователь выбирает автора. 
+author_id [long] (id автора) 
+!
+searchScreen_seriesListBlock_tap
+Отправляется, когда пользователь выбирает серию. 
+list_id [long] (id просматриваемой серии) 
+!
+searchScreen_seriesListView_view 
+Отправляется, когда пользователь просматривает вкладку “Серии” 
+keyWords [String] (параметр поиска) 
+!
+searchScreen_seriesListListView_view
+Отправляется, когда пользователь просматривает серию. 
+list_id [long] (id просматриваемой серии) 
+!
+authorScreen_view 
+Отправляется, когда пользователь просматривает профиль автора. 
+user_authorized [bool] (состояние пользователя: true - user authorized,  false - user unauthorized); author_id [long] (id автора) 
+!
+authorScreen_seriesListView_view 
+Отправляется, когда пользователь просматривает серии автора. 
+author_id [long] (id автора) 
+!
+authorScreen_bookBlock_tap 
+Отправляется, когда пользователь выбирает книгу. 
+book_id [long] (id просматриваемой книги) 
+!
+authorScreen_listBlock_tap 
+Отправляется, когда пользователь выбирает серию. 
+list_id [long] (id просматриваемой серии)
+!
+authorScreen_listBlock_view 
+Отправляется, когда пользователь просматривает серию. 
+list_id [long] (id просматриваемой серии) 
+!
+authorScreen_listBookBlock_tap
+Отправляется, когда пользователь выбирает книгу из серии автора. 
+book_id [long] (id просматриваемой книги)
+!
+bookScreen_buyButton_tap 
+Отправляется, когда пользователь нажимает на кнопку “Купить и читать”. 
+user_authorized [bool] (состояние пользователя: true - user authorized, false - user unauthorized); author_id [long] (id автора); book_id [long] (id просматриваемой книги) 
+!
+bookScreen_rentButton_tap 
+Отправляется, когда пользователь нажимает на кнопку “Взять по абонементу”. 
+user_authorized [bool] (состояние пользователя: true - user authorized, false - user unauthorized); author_id [long] (id автора); book_id [long] (id просматриваемой книги) 
+!
+bookScreen_readFragmentButton_tap 
+Отправляется, когда пользователь нажимает на кнопку “Фрагмент”. 
+user_authorized [bool] (состояние пользователя: true - user authorized, false - user unauthorized); author_id [long] (id автора); book_id [long] (id просматриваемой книги) 

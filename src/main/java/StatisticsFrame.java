@@ -4,14 +4,24 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
 public class StatisticsFrame extends JDialog {
     JFrame frame = new JFrame("EventsLog");
     JPanel jPanel = new JPanel(new GridBagLayout());
+    JTextArea resultField = new JTextArea();
+    String s1[] = {"MainScreen", "SearchScreen", "BookScreen", "AuthorScreen",
+            "Block", "InputField", "ListView", "Button", "Screen"};
+    JComboBox dropdown = new JComboBox(s1);
+    String s2[] = {"Все сценарии", "1 Сценарий", "2 Сценарий", "3 Сценарий", "4 Сценарий",
+            "5 Сценарий", "6 Сценарий", "7 Сценарий", "8 Сценарий", "9 Сценарий", "10 Сценарий", "11 Сценарий"};
+    JComboBox dropdown2 = new JComboBox(s2);
     JButton script = createSimpleButton("Сценарий");
     JButton screen = createSimpleButton("События (экран)");
     JButton element = createSimpleButton("События (элемент)");
+    Match match = new Match();
 
     public StatisticsFrame () {
         script.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -26,7 +36,7 @@ public class StatisticsFrame extends JDialog {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                resultField.setText(match.getSeq("В"));
             }
         });
         screen.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -41,7 +51,8 @@ public class StatisticsFrame extends JDialog {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                String s = String.valueOf(dropdown.getSelectedItem());
+                resultField.setText(match.screenStat(s));
             }
         });
         element.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -56,7 +67,8 @@ public class StatisticsFrame extends JDialog {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                String s = String.valueOf(dropdown.getSelectedItem());
+                resultField.setText(match.elementStat(s));
             }
         });
 
@@ -75,17 +87,29 @@ public class StatisticsFrame extends JDialog {
         Box box = new Box(BoxLayout.Y_AXIS);
         add( box );
 
-        JTextArea resultField = new JTextArea();
         resultField.setFont(new Font("Arial", Font.PLAIN, 20));
 
         JScrollPane scroll = new JScrollPane(resultField);
         scroll.setPreferredSize(new Dimension(660, 400));
+
+        dropdown.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        dropdown2.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        ActionListener actionListener = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String c = String.valueOf(dropdown2.getSelectedItem()).substring(0,2);
+                //String s = Character.toString(c);
+                resultField.setText(match.getSeq(c));
+            }
+        };
+        dropdown2.addActionListener(actionListener);
 
         jPanel.add(script, constraints);
         jPanel.add(screen, constraints);
         jPanel.add(element, constraints);
         jPanel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
         box.add(scroll);
+        box.add(dropdown);
+        box.add(dropdown2);
         box.add(jPanel);
         frame.add(box);
 
